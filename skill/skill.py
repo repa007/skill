@@ -2,7 +2,7 @@ import aiohttp
 from aiohttp import web
 
 HOST_IP = "0.0.0.0"
-HOST_PORT = 1254
+HOST_PORT = 1234
 
 async def skill_space(request_obj):
     request = await request_obj.json()
