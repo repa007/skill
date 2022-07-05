@@ -44,7 +44,7 @@ def main():
                 response["session"] = content["session"]
                 response["response"] = {"end_session" : False}
                 response["response"]["buttons"] = [{"title": "Новый год"}, {"title": "День рождения"}]
-                response["response"]["text"] = generate_new_year(com)
+                response["response"]["text"] = generate_new_year(response)
                 response["response"]["end_session"] = False
                 return response
             response = sayHello()
@@ -60,7 +60,7 @@ def main():
                 response["session"] = content["session"]
                 response["response"] = {"end_session" : False}
                 response["response"]["buttons"] = [{"title": "Новый год"}, {"title": "День рождения"}]
-                response["response"]["text"] = generate_birthday(com)
+                response["response"]["text"] = generate_birthday(response)
                 response["response"]["end_session"] = False
                 return response
             response = sayHello()
@@ -80,12 +80,12 @@ def main():
 ############----------------------###########
 ############-----FOR NEW YEAR-----###########
 ############----------------------###########
-def generate_new_year(com):
+def generate_new_year(response):
     random_number = randint(1,10)
     if random_number == 1:
         congratulation = col_1()
     if random_number == 2:
-        congratulation = col_2()
+        congratulation = col_2(response)
     if random_number == 3:
         congratulation = col_3()
     if random_number == 4:
@@ -108,8 +108,9 @@ def generate_new_year(com):
 def col_1():
     text = "Коллеги, в преддверие Нового года хочу пожелать вам сказочных зарплат, волшебных условий работы и начальников, которые всегда будут в чудесном расположении духа! Пусть ваш опыт и знания станут ценнее любых богатств. Но если кто-то задумает их приобрести — торгуйтесь до последнего!"
 
-def col_2():
+def col_2(response):
     text = "C НГ!"
+    response["response"]["text"] = "С эн гэ!"
     return text
 
 def col_3():
